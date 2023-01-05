@@ -1,10 +1,5 @@
 #include <Ethernet.h> // Inclut la bibliothèque Ethernet
 
-const int avancerPin = 1; // Broche utilisée pour envoyer la commande "avancer"
-const int gauchePin = 3; // Broche utilisée pour envoyer la commande "tourner à gauche"
-const int droitePin = 5; // Broche utilisée pour envoyer la commande "tourner à droite"
-const int reculerPin = 9; // Broche utilisée pour envoyer la commande "reculer"
-
 const int led1Pin = 6; // Broche de la LED 1
 const int led2Pin = 8; // Broche de la LED 2
 const int led3Pin = 2; // Broche de la LED 3
@@ -22,10 +17,7 @@ EthernetServer server(80); // Crée un serveur TCP sur le port 80
 
 void setup() {
   // Configure les broches de sortie et initialise l'Ethernet et le serveur
-  pinMode(avancerPin, OUTPUT);
-  pinMode(gauchePin, OUTPUT);
-  pinMode(droitePin, OUTPUT);
-  pinMode(reculerPin, OUTPUT);
+
   pinMode(led1Pin, OUTPUT);
   pinMode(led2Pin, OUTPUT);
   pinMode(led3Pin, OUTPUT);
@@ -56,26 +48,26 @@ void loop() {
 
     // Compare la chaîne à différentes valeurs pour savoir quelle commande a été envoyée
     if (commande == "avancer") {
-      digitalWrite(avancerPin, HIGH); // Envoie la commande "avancer"
+      
       led1Etat = HIGH; // Allume la LED 1
       led2Etat = HIGH; // Allume la LED 2
       led3Etat = LOW; // Eteint la LED 3
       led4Etat = LOW; // Eteint la Led 4
 
-          } else if (commande == "gauche") {
-      digitalWrite(gauchePin, HIGH); // Envoie la commande "tourner à gauche"
+     } else if (commande == "gauche") {
+      
       led1Etat = LOW; // Eteint la LED 1
       led2Etat = LOW; // Eteint la LED 2
       led3Etat = HIGH; // Allume la LED 3
       led4Etat = LOW; // Eteint la LED 4
     } else if (commande == "droite") {
-      digitalWrite(droitePin, HIGH); // Envoie la commande "tourner à droite"
+      
       led1Etat = LOW; // Eteint la LED 1
       led2Etat = LOW; // Eteint la LED 2
       led3Etat = LOW; // Eteint la LED 3
       led4Etat = HIGH; // Allume la LED 4
     } else if (commande == "reculer") {
-      digitalWrite(reculerPin, HIGH); // Envoie la commande "reculer"
+     
       led1Etat = LOW; // Eteint la LED 1
       led2Etat = HIGH; // Allume la LED 2
       led3Etat = LOW; // Eteint la LED 3
