@@ -30,7 +30,7 @@
       var droiteBouton = document.getElementById("droite");
       var reculerBouton = document.getElementById("reculer");
 
-      // gère quand le bouton est cliqué
+      // gère  le bouton quand il est cliqué
       avancerBouton.addEventListener("click", envoyerCommande("avancer"));
       gaucheBouton.addEventListener("click", envoyerCommande("gauche"));
       droiteBouton.addEventListener("click", envoyerCommande("droite"));
@@ -39,7 +39,7 @@
       // Envoie une commande au serveur TCP lorsqu'un bouton est cliqué
       function envoyerCommande(commande) {
         var xhr = new XMLHttpRequest(); // Crée un nouvel objet XMLHttpRequest
-        xhr.open("GET", "http://192.168.0.0/?commande=" + commande, true); // Ouvre une connexion avec la carte arduino, l'ip de la carte arduino 
+        xhr.open("GET", "http://192.168.65.71/?commande=" + commande, true); // Ouvre une connexion avec la carte arduino, l'ip de la carte arduino 
         xhr.send(); // Envoie la requête
       }
     </script>
