@@ -1,14 +1,28 @@
 <html>
   <head>
     <title>Pilotage Robot à distance</title>
+    <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+  <body >
     <h1>Pilotage du robot à distance </h1>
-    <p>Utilisez les boutons ci-dessous pour contrôler le robot :</p>
-    <button id="avancer">Avancer</button>
-    <button id="gauche">Tourner à gauche</button>
-    <button id="droite">Tourner à droite</button>
-    <button id="reculer">Reculer</button>
+    <div id="deplacement">
+      <p id="para">Utilisez les boutons ci-dessous pour contrôler le robot :</p>
+      <div id="avance">
+        <button id="avancer">Avancer</button>
+      </div>
+      <div id="tourne">
+        <div id="tournegauche">
+          <button id="gauche">Tourner à gauche</button>
+        </div>
+        <div id="tournedroite">
+          <button id="droite">Tourner à droite</button>
+        </div>
+      </div>
+      <div id="recule">
+        <button id="reculer">Reculer</button>
+      </div>
+  
+    </div>
     <script>
       // Récupère les boutons
       var avancerBouton = document.getElementById("avancer");
@@ -16,7 +30,7 @@
       var droiteBouton = document.getElementById("droite");
       var reculerBouton = document.getElementById("reculer");
 
-      // Ajoute des écouteurs d'événement aux boutons
+      // gère quand le bouton est cliqué
       avancerBouton.addEventListener("click", envoyerCommande("avancer"));
       gaucheBouton.addEventListener("click", envoyerCommande("gauche"));
       droiteBouton.addEventListener("click", envoyerCommande("droite"));
