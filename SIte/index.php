@@ -5,43 +5,96 @@
   </head>
   <body >
     <h1>Pilotage du robot à distance </h1>
+    <?php
+    
+  //$adresse = "192.168.64.79";  test hercules
+  // Création du socket 
+
+  $adresse = "192.168.65.71";
+  $port = 123;
+  $socket =socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+  
+  if($socket === false)
+  {
+    echo"problème pour créer le socket";
+  }
+  else{
+    echo"socket créer";
+  }
+  
+  // Connection du socket à l'arduino
+
+  $result = socket_connect($socket, $adresse, $port);
+  if($socket === false)
+  {
+    echo "connection au socket échoué";
+  }
+  else
+  {
+    echo "socket connecter";
+  }
+
+  // Gestion du message envoyé par rapport au bouton envoyé
+  
+  if(isset($_POST['reculer']))
+  {
+    $data = "reculer";
+    socket_write($socket,$data);
+  }
+  else if(isset($_POST['gauche']))
+  {
+    $data = "gauche";
+    socket_write($socket,$data);
+  }
+  else if(isset($_POST['droite']))
+  {
+    $data = "droite";
+    socket_write($socket,$data);
+  }
+  else if(isset($_POST['avancer']))
+  {
+    $data = "avancer";
+    socket_write($socket,$data);
+  }
+
+  // Lecture du socket
+
+  $out = socket_read($socket,200,PHP_BINARY_READ);
+  echo $out;
+
+  // fermeture du socket
+
+  socket_close($socket);
+
+  
+
+
+  ?>
+   <form action="#" method="POST">
     <div id="deplacement">
       <p id="para">Utilisez les boutons ci-dessous pour contrôler le robot :</p>
       <div id="avance">
-        <button id="avancer">Avancer</button>
+        <button id="avancer" name="avancer">Avancer</button>
       </div>
       <div id="tourne">
         <div id="tournegauche">
-          <button id="gauche">Tourner à gauche</button>
+          <button id="gauche" name ="gauche">Tourner à gauche</button>
         </div>
         <div id="tournedroite">
-          <button id="droite">Tourner à droite</button>
+          <button id="droite" name="droite">Tourner à droite</button>
         </div>
       </div>
       <div id="recule">
-        <button id="reculer">Reculer</button>
+        <button id="reculer" name="reculer">Reculer</button>
       </div>
-  
+     
     </div>
-    <script>
-      // Récupère les boutons
-      var avancerBouton = document.getElementById("avancer");
-      var gaucheBouton = document.getElementById("gauche");
-      var droiteBouton = document.getElementById("droite");
-      var reculerBouton = document.getElementById("reculer");
+</form>
+    
 
-      // gère  le bouton quand il est cliqué
-      avancerBouton.addEventListener("click", envoyerCommande("avancer"));
-      gaucheBouton.addEventListener("click", envoyerCommande("gauche"));
-      droiteBouton.addEventListener("click", envoyerCommande("droite"));
-      reculerBouton.addEventListener("click", envoyerCommande("reculer"));
 
-      // Envoie une commande au serveur TCP lorsqu'un bouton est cliqué
-      function envoyerCommande(commande) {
-        var xhr = new XMLHttpRequest(); // Crée un nouvel objet XMLHttpRequest
-        xhr.open("GET", "http://192.168.65.71/?commande=" + commande, true); // Ouvre une connexion avec la carte arduino, l'ip de la carte arduino 
-        xhr.send(); // Envoie la requête
-      }
-    </script>
-  </body>
+
+  </script>
+  
+</body>
 </html>
