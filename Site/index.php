@@ -57,17 +57,14 @@
           //$resultat = $GLOBALS['bdd'] -> query($verif);
 
         }
-       
 
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) 
         {
-          if (isset($_POST['deconnexion2'])) 
-      {
-              // Le bouton de déconnexion a été cliqué
-              $TheUser->deconnexion();
-              $_SESSION['Connexion'] = false;
-      }
-            ?>
+        ?>
+
+        
+          
+            
             <h1>Pilotage du robot à distance </h1>
 
             <?php
@@ -127,10 +124,7 @@
               
             </form> 
             </div>
-
-            <form action="" method="POST">
-              <input type="submit" value="Déconnexion" name="deconnexion2">
-            </form>           
+          
     <?php
         }
         else
@@ -162,17 +156,24 @@
                     <input type="submit" value="Connexion" name="submit">
                     </div>
                 </form>
-                <form action=""  method="POST">
-                    <imput type="submit" value="Deconnexion" name="deconnexion">
-              </form>
+                
                 
                 </div>
             </div>
             </div>
             <?php 
         }
-    ?>
+    
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) 
+{?>
+  
 
+<form action="" method="POST">
+              <input type="submit" value="Déconnexion" name="deconnexion">
+            </form> 
+        <?php
+}
+?>
 
 </body>
 </html>

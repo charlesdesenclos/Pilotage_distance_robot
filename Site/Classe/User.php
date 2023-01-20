@@ -26,6 +26,7 @@
         
         public function deconnexion()
         {
+            session_unset();
             session_destroy();
 
         }
