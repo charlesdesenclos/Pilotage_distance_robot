@@ -3,7 +3,7 @@
       
         try 
     {
-        $GLOBALS['bdd'] = new PDO("mysql:host=mysql-desenclos.alwaysdata.net;dbname=desenclos_robot;charset=utf8", "desenclos", "sqK8ZUWxuvEpp!y");
+        $GLOBALS['bdd'] = new PDO("mysql:host=192.168.65.102:3306;dbname=desenclos_robot;charset=utf8", "user", "user");
 
         
     }
