@@ -20,7 +20,7 @@
 
   <?php
         
-        require_once 'pdo/config.php'; // ajout connexion bdd 
+        require_once 'pdo/config.php'; // appele de la bdd
         $GLOBALS['bdd'] = $bdd;
 
         $_SESSION['Connexion'] = false;
@@ -32,15 +32,20 @@
 
 <?php
     
-    
+        //appele de la classe User
 
         include("./Classe/User.php");
         $TheUser = new User(null,null,null);
+
+        //gère la déconnexion
+
         if (isset($_POST['deconnexion'])) {
           // Le bouton de déconnexion a été cliqué
           $TheUser->deconnexion();
           $_SESSION['Connexion'] = false;
         }
+
+        //traitement du formulaire de connexion
         
         if(isset($_POST['submit']))
         {
@@ -57,6 +62,8 @@
           //$resultat = $GLOBALS['bdd'] -> query($verif);
 
         }
+
+
 
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) 
         {
@@ -88,9 +95,6 @@
               socket_write($socket, $command, strlen($command));
             }
             
-            
-
-           
 
             // fermeture du socket
 
@@ -163,6 +167,8 @@
             </div>
             <?php 
         }
+
+        
     
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) 
 {?>
