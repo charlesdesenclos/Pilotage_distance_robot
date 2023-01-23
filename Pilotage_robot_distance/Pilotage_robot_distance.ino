@@ -9,7 +9,7 @@ byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED }; // Adresse MAC de l'Arduino
 IPAddress ip(192,168,65,71); // Adresse IP 
 
 
-EthernetServer server(123); // Crée un serveur TCP sur le port 80
+EthernetServer server(123); // Crée un serveur TCP sur le port 123
 
 void setup() {
   // Configure les broches de sortie et initialise l'Ethernet et le serveur
