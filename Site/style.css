@@ -215,5 +215,9 @@ form .btn input[type="submit"]{
   padding : 1%;
   margin-right: 50%;
 }
-
+link[rel="icon"] {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px 20px 30px 40px;
+}
 
